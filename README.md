@@ -11,8 +11,8 @@ Este será configurado utilizando Docker para asegurar un ambiente homogéneo pa
 
 1. Instalar [Docker](https://www.docker.com/products/docker-desktop)
 1. Abrir una terminal en el directorio de trabajo
-1. Ejecutar `docker pull labprog:glassfish`
-1. Verificar que la imagen haya sido bajada con éxito ejecutando `docker run -it --rm labprog:glassfish`
+1. Ejecutar `docker pull labprog/glassfish`
+1. Verificar que la imagen haya sido bajada con éxito ejecutando `docker run -it --rm labprog/glassfish`
 
 Si la instalación fue correcta debería abrirse una terminal dentro del contenedor Linux, en la ubicación home de root.
 Con el comando `ls` debería listarse una sola carpeta vacia llamada `app`.
