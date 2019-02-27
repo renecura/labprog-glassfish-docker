@@ -1,4 +1,5 @@
-FROM openjdk:8-jdk-alpine
+# FROM openjdk:8-jdk-alpine
+FROM labprog/tp1-base
 
 # Establece el directorio de trabajo
 WORKDIR /usr/local
@@ -9,14 +10,8 @@ RUN wget http://ftp.osuosl.org/pub/eclipse/glassfish/web-5.1.0.zip && \
     chmod +x glassfish5/glassfish/bin/* && \
     rm -f web-5.1.0.zip
 
-# Instala paquetes
-RUN apk update && apk add --no-cache apache-ant bash git
-
 ## Configura variables de entorno
-ENV ANT_HOME /usr/share/java/apache-ant 
-ENV PATH /usr/local/glassfish5/glassfish/bin:$ANT_HOME/bin:$PATH
-
-ENV PS1 '\e[1;34mlabprog\e[1;33m@\e[1;31m\W\e[1;33m\$ \e[m'
+ENV PATH /usr/local/glassfish5/glassfish/bin:$PATH
 
 # Realiza la configuración inicial de glassfish
 RUN echo $'AS_ADMIN_PASSWORD=\nAS_ADMIN_NEWPASSWORD=admin\n' > pw && \
@@ -31,9 +26,6 @@ VOLUME /usr/local/glassfish5/glassfish
 
 # Establece el home como directorio de trabajo
 WORKDIR /root
-
-# Crea el directorio app para montar el código a desarrollar
-RUN mkdir app
 
 # Expone los puertos
 EXPOSE 8080 4848
